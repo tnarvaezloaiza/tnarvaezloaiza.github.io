@@ -1,0 +1,1483 @@
+<!doctype html>
+
+<html class="light" lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Tania Narváez | Case Study: rali-e Checkout Mobile</title>
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Public+Sans:wght@600;700;800&amp;display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-container": "#af9e00",
+              primary: "#674bb5",
+              "on-primary-fixed": "#21005e",
+              "surface-variant": "#e1e3e4",
+              "on-error": "#ffffff",
+              "on-surface": "#191c1d",
+              "on-tertiary-fixed": "#201c00",
+              "surface-container-highest": "#e1e3e4",
+              tertiary: "#6a5f00",
+              "on-secondary-container": "#596373",
+              "on-primary-fixed-variant": "#4f319c",
+              "secondary-container": "#d6e0f3",
+              "on-tertiary-container": "#3b3500",
+              "surface-bright": "#f8f9fa",
+              "on-secondary": "#ffffff",
+              "error-container": "#ffdad6",
+              "on-tertiary": "#ffffff",
+              outline: "#7a7583",
+              "inverse-primary": "#cebdff",
+              "secondary-fixed": "#d9e3f6",
+              "outline-variant": "#cac4d4",
+              "primary-fixed": "#e8ddff",
+              "surface-container-high": "#e7e8e9",
+              "primary-container": "#a78bfa",
+              "inverse-on-surface": "#f0f1f2",
+              "inverse-surface": "#2e3132",
+              "tertiary-fixed": "#f8e454",
+              "on-surface-variant": "#494552",
+              background: "#f8f9fa",
+              "surface-container-low": "#f3f4f5",
+              error: "#ba1a1a",
+              "surface-tint": "#674bb5",
+              surface: "#f8f9fa",
+              "surface-dim": "#d9dadb",
+              "surface-container": "#edeeef",
+              secondary: "#555f6f",
+              "on-primary-container": "#3c1989",
+              "on-secondary-fixed": "#121c2a",
+              "on-tertiary-fixed-variant": "#504700",
+              "on-error-container": "#93000a",
+              "tertiary-fixed-dim": "#dbc839",
+              "on-background": "#191c1d",
+              "primary-fixed-dim": "#cebdff",
+              "surface-container-lowest": "#ffffff",
+              "on-secondary-fixed-variant": "#3d4756",
+              "secondary-fixed-dim": "#bdc7d9",
+              "on-primary": "#ffffff",
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+            spacing: {
+              "stack-md": "12px",
+              "section-padding-y": "80px",
+              base: "8px",
+              "stack-sm": "4px",
+              "stack-lg": "24px",
+              gutter: "24px",
+              "container-max": "1120px",
+            },
+            fontFamily: {
+              "body-lg": ["Inter"],
+              "headline-md": ["Public Sans"],
+              "label-sm": ["Inter"],
+              "headline-xl-mobile": ["Public Sans"],
+              "headline-lg": ["Public Sans"],
+              "headline-xl": ["Public Sans"],
+              "label-md": ["Inter"],
+              "body-md": ["Inter"],
+              "headline-lg-mobile": ["Public Sans"],
+            },
+            fontSize: {
+              "body-lg": [
+                "18px",
+                { lineHeight: "1.6", letterSpacing: "0em", fontWeight: "400" },
+              ],
+              "headline-md": [
+                "24px",
+                { lineHeight: "1.3", letterSpacing: "0em", fontWeight: "600" },
+              ],
+              "label-sm": [
+                "12px",
+                { lineHeight: "1", letterSpacing: "0.02em", fontWeight: "500" },
+              ],
+              "headline-xl-mobile": [
+                "36px",
+                { lineHeight: "1.1", fontWeight: "700" },
+              ],
+              "headline-lg": [
+                "32px",
+                {
+                  lineHeight: "1.2",
+                  letterSpacing: "-0.01em",
+                  fontWeight: "600",
+                },
+              ],
+              "headline-xl": [
+                "48px",
+                {
+                  lineHeight: "1.1",
+                  letterSpacing: "-0.02em",
+                  fontWeight: "700",
+                },
+              ],
+              "label-md": [
+                "14px",
+                { lineHeight: "1", letterSpacing: "0.05em", fontWeight: "600" },
+              ],
+              "body-md": [
+                "16px",
+                { lineHeight: "1.5", letterSpacing: "0em", fontWeight: "400" },
+              ],
+              "headline-lg-mobile": [
+                "28px",
+                { lineHeight: "1.2", fontWeight: "600" },
+              ],
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+        vertical-align: middle;
+      }
+
+      .card-hover:hover {
+        box-shadow: 0 4px 12px rgba(31, 41, 55, 0.03);
+        border-color: #a78bfa;
+      }
+
+      .transition-standard {
+        transition: all 200ms ease-in-out;
+      }
+
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: #f8f9fa;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: #cac4d4;
+        border-radius: 4px;
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: #a78bfa;
+      }
+    </style>
+  </head>
+
+  <body
+    class="bg-background text-on-surface font-body-md selection:bg-primary-fixed selection:text-on-primary-fixed"
+  >
+    <!-- Top Navigation Bar -->
+    <header
+      class="sticky top-0 z-50 bg-surface-container-lowest border-b border-outline-variant"
+    >
+      <nav
+        class="flex justify-between items-center w-full px-gutter max-w-container-max mx-auto h-16"
+      >
+        <a
+          class="font-headline-md text-headline-md font-bold text-on-surface hover:text-primary transition-colors"
+          href="index.html#inicio"
+          >Tania Narváez</a
+        >
+
+        <div
+          class="hidden md:flex gap-8 items-center font-body-md text-body-md"
+        >
+          <a
+            class="text-on-surface-variant hover:text-primary transition-colors"
+            href="index.html#inicio"
+            >Inicio</a
+          >
+          <a
+            class="text-on-surface-variant hover:text-primary transition-colors"
+            href="index.html#experiencia"
+            >Experiencia</a
+          >
+          <a
+            class="text-primary font-bold border-b-2 border-primary pb-1"
+            href="index.html#proyectos"
+            >Proyectos</a
+          >
+          <a
+            class="text-on-surface-variant hover:text-primary transition-colors"
+            href="index.html#investigacion"
+            >Investigación</a
+          >
+          <a
+            class="text-on-surface-variant hover:text-primary transition-colors"
+            href="index.html#habilidades"
+            >Habilidades</a
+          >
+          <a
+            class="text-on-surface-variant hover:text-primary transition-colors"
+            href="index.html#contacto"
+            >Contacto</a
+          >
+        </div>
+
+        <a
+          class="bg-primary text-on-primary px-6 py-2 rounded-lg font-label-md hover:opacity-90 transition-all inline-block"
+          href="assets/Tania_Narvaez_Loaiza_cv.pdf"
+          download="Tania_Narvaez_Loaiza_CV.pdf"
+        >
+          Descargar CV
+        </a>
+      </nav>
+    </header>
+
+    <main class="max-w-container-max mx-auto px-gutter py-12">
+      <!-- Hero Section -->
+      <section class="mb-16">
+        <div
+          class="grid grid-cols-1 md:grid-cols-12 gap-stack-lg items-end mb-12"
+        >
+          <div class="md:col-span-7">
+            <span
+              class="text-primary font-label-md text-label-md uppercase tracking-widest mb-4 block"
+              >Case Study • UX/UI Strategy</span
+            >
+
+            <h1 class="font-headline-xl text-headline-xl mb-6">
+              Rediseño UX del Checkout Mobile Rali-e para <b class="text-primary">Colombina</b>
+            </h1>
+
+            <p
+              class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl"
+            >
+              Análisis y rediseño del flujo de compra móvil para reducir
+              fricción, aclarar el uso de monedas/puntos y aumentar la confianza
+              del usuario al confirmar su pedido.
+            </p>
+
+            <div class="flex flex-wrap gap-2 mt-6">
+              <span
+                class="px-3 py-1 bg-secondary-container text-on-secondary-fixed-variant rounded-full text-label-sm font-label-sm uppercase"
+                >E-commerce Mobile</span
+              >
+              <span
+                class="px-3 py-1 bg-secondary-container text-on-secondary-fixed-variant rounded-full text-label-sm font-label-sm uppercase"
+                >Checkout UX</span
+              >
+              <span
+                class="px-3 py-1 bg-secondary-container text-on-secondary-fixed-variant rounded-full text-label-sm font-label-sm uppercase"
+                >User Flow</span
+              >
+              <span
+                class="px-3 py-1 bg-secondary-container text-on-secondary-fixed-variant rounded-full text-label-sm font-label-sm uppercase"
+                >Heurística UX</span
+              >
+            </div>
+          </div>
+
+          <div class="md:col-span-5">
+            <div
+              class="p-6 bg-surface-container rounded-xl border border-outline-variant"
+            >
+              <p
+                class="font-label-sm text-label-sm text-on-surface-variant mb-2 uppercase opacity-70"
+              >
+                Mi Rol
+              </p>
+
+              <p class="font-headline-md text-headline-md mb-4">
+                UX/UI Designer
+              </p>
+
+              <div class="space-y-3">
+                <div class="flex items-center gap-3">
+                  <span class="material-symbols-outlined text-primary text-lg"
+                    >manage_search</span
+                  >
+                  <span class="text-body-md"
+                    >Evaluación heurística y diagnóstico UX</span
+                  >
+                </div>
+
+                <div class="flex items-center gap-3">
+                  <span class="material-symbols-outlined text-primary text-lg"
+                    >account_tree</span
+                  >
+                  <span class="text-body-md"
+                    >Journey map, sitemap y user flow con errores</span
+                  >
+                </div>
+
+                <div class="flex items-center gap-3">
+                  <span class="material-symbols-outlined text-primary text-lg"
+                    >shopping_cart_checkout</span
+                  >
+                  <span class="text-body-md"
+                    >Optimización de checkout mobile</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button
+          type="button"
+          aria-label="Abrir Sitemap de Rali-e en grande"
+          data-open-image-modal="assets/banner-rali-e.png"
+          class="relative w-full aspect-video md:aspect-[21/9] rounded-2xl overflow-hidden border border-outline-variant group bg-white focus:outline-none focus:ring-4 focus:ring-primary/20"
+        >
+          <img
+            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            src="assets/banner-rali-e.png"
+            alt="Sitemap del flujo de compra Rali-e"
+          />
+
+          <div
+            class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"
+          ></div>
+
+          <div
+            class="absolute left-6 bottom-6 rounded-xl bg-white/90 px-4 py-3 text-left backdrop-blur border border-outline-variant"
+          >
+            <p class="font-label-md text-label-md text-on-surface">
+              Arquitectura del checkout
+            </p>
+            <p class="text-label-sm text-outline">Click para ampliar</p>
+          </div>
+        </button>
+      </section>
+
+      <!-- Project Briefing Modules -->
+      <section class="grid grid-cols-1 md:grid-cols-3 gap-stack-lg mb-20">
+        <div
+          class="p-8 bg-surface-container-lowest border border-outline-variant rounded-xl card-hover transition-standard"
+        >
+          <h3 class="font-label-md text-label-md text-primary mb-4 uppercase">
+            Resumen
+          </h3>
+
+          <p class="text-body-md leading-relaxed text-on-surface-variant">
+            Rediseño conceptual del checkout mobile de rali-e ventas, enfocado
+            en simplificar el proceso de compra, hacer visible el saldo final y
+            comunicar con mayor claridad el uso de monedas/puntos.
+          </p>
+        </div>
+
+        <div
+          class="p-8 bg-surface-container-lowest border border-outline-variant rounded-xl card-hover transition-standard"
+        >
+          <h3 class="font-label-md text-label-md text-primary mb-4 uppercase">
+            Problema
+          </h3>
+
+          <p class="text-body-md leading-relaxed text-on-surface-variant">
+            El checkout anterior generaba fricción por exceso de pasos,
+            información financiera dispersa, reglas de negocio poco claras y
+            estados de error insuficientes, especialmente en pago,
+            monedas/puntos y confirmación.
+          </p>
+        </div>
+
+        <div
+          class="p-8 bg-surface-container-lowest border border-outline-variant rounded-xl card-hover transition-standard"
+        >
+          <h3 class="font-label-md text-label-md text-primary mb-4 uppercase">
+            Objetivo
+          </h3>
+
+          <p class="text-body-md leading-relaxed text-on-surface-variant">
+            Construir un flujo más predecible: carrito, checkout, revisión y
+            confirmación; reduciendo incertidumbre, protegiendo beneficios y
+            permitiendo recuperarse ante errores sin abandonar la compra.
+          </p>
+        </div>
+      </section>
+
+      <!-- Research Findings -->
+      <section class="mb-20">
+        <div class="flex items-center gap-4 mb-8">
+          <h2 class="font-headline-lg text-headline-lg">
+            Investigación &amp; Hallazgos
+          </h2>
+
+          <div class="h-px flex-1 bg-outline-variant"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-stack-lg">
+          <div class="md:col-span-4 space-y-4">
+            <div class="p-6 bg-primary-fixed text-on-primary-fixed rounded-xl">
+              <span
+                class="material-symbols-outlined text-4xl mb-4"
+                style="font-variation-settings: &quot;FILL&quot; 1"
+                >analytics</span
+              >
+
+              <h4 class="font-headline-md text-headline-md mb-2">Métodos</h4>
+
+              <ul class="space-y-2 font-label-md text-label-md">
+                <li class="flex items-center gap-2">
+                  • Evaluación heurística UX/UI
+                </li>
+                <li class="flex items-center gap-2">
+                  • Journey map del checkout anterior
+                </li>
+                <li class="flex items-center gap-2">
+                  • Sitemap del flujo de compra
+                </li>
+                <li class="flex items-center gap-2">
+                  • User flow con estados de error
+                </li>
+              </ul>
+            </div>
+
+            <div class="p-6 border border-outline-variant rounded-xl bg-white">
+              <p class="font-label-md text-label-md text-primary mb-2">
+                Enfoque del análisis
+              </p>
+              <p class="text-body-md text-on-surface-variant">
+                Fricción, abandono y riesgo de pérdida o mala comprensión de
+                monedas/puntos durante la compra.
+              </p>
+            </div>
+          </div>
+
+          <div class="md:col-span-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div
+                class="p-6 border border-outline-variant rounded-xl hover:bg-white transition-standard"
+              >
+                <span class="text-primary font-bold text-2xl mb-2 block"
+                  >01</span
+                >
+                <h5 class="font-label-md text-label-md mb-2">
+                  Monedas y puntos poco protegidos
+                </h5>
+                <p class="text-body-md text-on-surface-variant">
+                  La redención no se percibía suficientemente explicada. El
+                  usuario podía sentir riesgo de perder beneficios si el pago
+                  fallaba, expiraba o quedaba pendiente.
+                </p>
+              </div>
+
+              <div
+                class="p-6 border border-outline-variant rounded-xl hover:bg-white transition-standard"
+              >
+                <span class="text-primary font-bold text-2xl mb-2 block"
+                  >02</span
+                >
+                <h5 class="font-label-md text-label-md mb-2">
+                  Saldo final sin protagonismo
+                </h5>
+                <p class="text-body-md text-on-surface-variant">
+                  Subtotal, descuentos, IVA, envío y monedas competían
+                  visualmente. El usuario no identificaba con facilidad el valor
+                  final a pagar.
+                </p>
+              </div>
+
+              <div
+                class="p-6 border border-outline-variant rounded-xl hover:bg-white transition-standard"
+              >
+                <span class="text-primary font-bold text-2xl mb-2 block"
+                  >03</span
+                >
+                <h5 class="font-label-md text-label-md mb-2">
+                  Errores sin recuperación clara
+                </h5>
+                <p class="text-body-md text-on-surface-variant">
+                  Faltaban validaciones visibles y mensajes específicos para
+                  casos como dirección incompleta, método de pago no
+                  seleccionado, envío no disponible o error al procesar.
+                </p>
+              </div>
+
+              <div
+                class="p-6 border border-outline-variant rounded-xl hover:bg-white transition-standard"
+              >
+                <span class="text-primary font-bold text-2xl mb-2 block"
+                  >04</span
+                >
+                <h5 class="font-label-md text-label-md mb-2">
+                  Flujo percibido como largo
+                </h5>
+                <p class="text-body-md text-on-surface-variant">
+                  El journey evidenció carga cognitiva acumulada por exceso de
+                  pasos, decisiones separadas y reglas de negocio comunicadas
+                  tarde.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Design Process -->
+      <section class="mb-20">
+        <div class="flex items-center gap-4 mb-8">
+          <h2 class="font-headline-lg text-headline-lg">Proceso de Diseño</h2>
+
+          <div class="h-px flex-1 bg-outline-variant"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-stack-lg mb-12">
+          <div class="space-y-8">
+            <div>
+              <h4 class="font-headline-md text-headline-md mb-4">
+                Decisiones Estratégicas
+              </h4>
+
+              <div class="space-y-4">
+                <div
+                  class="flex gap-4 p-4 bg-white rounded-lg border-l-4 border-primary shadow-sm"
+                >
+                  <span class="material-symbols-outlined text-primary"
+                    >route</span
+                  >
+
+                  <div>
+                    <p class="font-label-md text-label-md">
+                      Flujo principal en 4 etapas
+                    </p>
+
+                    <p class="text-body-md text-on-surface-variant">
+                      Se estructuró la compra en carrito, checkout, revisión y
+                      confirmación para reducir incertidumbre y hacer visible el
+                      avance del usuario.
+                    </p>
+                  </div>
+                </div>
+
+                <div
+                  class="flex gap-4 p-4 bg-white rounded-lg border-l-4 border-primary shadow-sm"
+                >
+                  <span class="material-symbols-outlined text-primary"
+                    >payments</span
+                  >
+
+                  <div>
+                    <p class="font-label-md text-label-md">
+                      Saldo final y monedas/puntos visibles
+                    </p>
+
+                    <p class="text-body-md text-on-surface-variant">
+                      El resumen debe mostrar el total estimado con envío,
+                      descuentos y monedas aplicadas desde etapas tempranas, y
+                      reforzarlo en revisión.
+                    </p>
+                  </div>
+                </div>
+
+                <div
+                  class="flex gap-4 p-4 bg-white rounded-lg border-l-4 border-primary shadow-sm"
+                >
+                  <span class="material-symbols-outlined text-primary"
+                    >warning</span
+                  >
+
+                  <div>
+                    <p class="font-label-md text-label-md">
+                      Estados de error accionables
+                    </p>
+
+                    <p class="text-body-md text-on-surface-variant">
+                      Se mapearon errores por mínimo de compra, método de pago,
+                      redención de monedas, dirección, envío, términos y
+                      procesamiento del pedido.
+                    </p>
+                  </div>
+                </div>
+
+                <div
+                  class="flex gap-4 p-4 bg-white rounded-lg border-l-4 border-primary shadow-sm"
+                >
+                  <span class="material-symbols-outlined text-primary"
+                    >fact_check</span
+                  >
+
+                  <div>
+                    <p class="font-label-md text-label-md">
+                      Revisión como punto de control
+                    </p>
+
+                    <p class="text-body-md text-on-surface-variant">
+                      Antes de confirmar, el usuario debe poder validar
+                      dirección, envío, método de pago, productos, descuentos,
+                      monedas y saldo a pagar.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- UX Artifacts -->
+          <div
+            class="bg-surface-container-low p-6 rounded-2xl border border-outline-variant"
+          >
+            <div class="mb-5">
+              <p
+                class="font-label-md text-label-md text-primary uppercase mb-2"
+              >
+                Artefactos UX
+              </p>
+
+              <h4 class="font-headline-md text-headline-md">
+                User Flow, Sitemap, Journey Map y Evaluación Heurística
+              </h4>
+
+              <p class="text-body-md text-on-surface-variant mt-2">
+                Haz click sobre cualquier imagen para verla en grande.
+              </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <button
+                type="button"
+                aria-label="Abrir User Flow de rali-e en grande"
+                data-open-image-modal="assets/USER_flow_Rallie.png"
+                data-image-title="User Flow rali-e"
+                class="group text-left bg-white border border-outline-variant rounded-xl overflow-hidden hover:border-primary hover:shadow-md transition-standard focus:outline-none focus:ring-4 focus:ring-primary/20"
+              >
+                <div class="aspect-video bg-surface-container overflow-hidden">
+                  <img
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    src="assets/USER_flow_Rallie.png"
+                    alt="User Flow del proyecto rali-e"
+                  />
+                </div>
+
+                <div class="p-3 flex items-center justify-between gap-3">
+                  <span class="font-label-md text-label-md text-on-surface">
+                    User Flow
+                  </span>
+
+                  <span class="material-symbols-outlined text-primary text-xl">
+                    open_in_full
+                  </span>
+                </div>
+              </button>
+
+              <button
+                type="button"
+                aria-label="Abrir Sitemap de rali-e en grande"
+                data-open-image-modal="assets/sitemap-rali-e.png"
+                data-image-title="Sitemap rali-e"
+                class="group text-left bg-white border border-outline-variant rounded-xl overflow-hidden hover:border-primary hover:shadow-md transition-standard focus:outline-none focus:ring-4 focus:ring-primary/20"
+              >
+                <div class="aspect-video bg-surface-container overflow-hidden">
+                  <img
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    src="assets/banner-rali-e.png"
+                    alt="Sitemap del proyecto rali-e"
+                  />
+                </div>
+
+                <div class="p-3 flex items-center justify-between gap-3">
+                  <span class="font-label-md text-label-md text-on-surface">
+                    Sitemap
+                  </span>
+
+                  <span class="material-symbols-outlined text-primary text-xl">
+                    open_in_full
+                  </span>
+                </div>
+              </button>
+
+              <button
+                type="button"
+                aria-label="Abrir Journey Map de rali-e en grande"
+                data-open-image-modal="assets/journey_map_rali-e.png"
+                data-image-title="Journey Map rali-e"
+                class="group text-left bg-white border border-outline-variant rounded-xl overflow-hidden hover:border-primary hover:shadow-md transition-standard focus:outline-none focus:ring-4 focus:ring-primary/20"
+              >
+                <div class="aspect-video bg-surface-container overflow-hidden">
+                  <img
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    src="assets/journey_map_rali-e.png"
+                    alt="Journey Map del proyecto rali-e"
+                  />
+                </div>
+
+                <div class="p-3 flex items-center justify-between gap-3">
+                  <span class="font-label-md text-label-md text-on-surface">
+                    Journey Map
+                  </span>
+
+                  <span class="material-symbols-outlined text-primary text-xl">
+                    open_in_full
+                  </span>
+                </div>
+              </button>
+
+              <button
+                type="button"
+                aria-label="Abrir Evaluación Heurística de rali-e en grande"
+                data-open-image-modal="assets/heuristica-rali-e.png"
+                data-image-title="Evaluación Heurística rali-e"
+                class="group text-left bg-white border border-outline-variant rounded-xl overflow-hidden hover:border-primary hover:shadow-md transition-standard focus:outline-none focus:ring-4 focus:ring-primary/20"
+              >
+                <div class="aspect-video bg-surface-container overflow-hidden">
+                  <img
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    src="assets/heuristica-rali-e.png"
+                    alt="Evaluación heurística del proyecto rali-e"
+                  />
+                </div>
+
+                <div class="p-3 flex items-center justify-between gap-3">
+                  <span class="font-label-md text-label-md text-on-surface">
+                    Heurística
+                  </span>
+
+                  <span class="material-symbols-outlined text-primary text-xl">
+                    open_in_full
+                  </span>
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Flow Structure -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <div
+            class="p-6 bg-white border border-outline-variant rounded-xl card-hover transition-standard"
+          >
+            <div
+              class="w-12 h-12 rounded-full bg-primary-fixed flex items-center justify-center mb-4"
+            >
+              <span class="material-symbols-outlined text-primary"
+                >shopping_cart</span
+              >
+            </div>
+
+            <p class="font-label-md text-label-md text-primary mb-2">
+              1. Carrito
+            </p>
+
+            <p class="text-body-md text-on-surface-variant">
+              Revisión de productos, cantidades, descuentos, monedas disponibles
+              y validación del mínimo de compra.
+            </p>
+          </div>
+
+          <div
+            class="p-6 bg-white border border-outline-variant rounded-xl card-hover transition-standard"
+          >
+            <div
+              class="w-12 h-12 rounded-full bg-primary-fixed flex items-center justify-center mb-4"
+            >
+              <span class="material-symbols-outlined text-primary"
+                >credit_card</span
+              >
+            </div>
+
+            <p class="font-label-md text-label-md text-primary mb-2">
+              2. Checkout
+            </p>
+
+            <p class="text-body-md text-on-surface-variant">
+              Selección de método de pago, aplicación de monedas/puntos,
+              dirección, envío y fecha estimada de entrega.
+            </p>
+          </div>
+
+          <div
+            class="p-6 bg-white border border-outline-variant rounded-xl card-hover transition-standard"
+          >
+            <div
+              class="w-12 h-12 rounded-full bg-primary-fixed flex items-center justify-center mb-4"
+            >
+              <span class="material-symbols-outlined text-primary"
+                >fact_check</span
+              >
+            </div>
+
+            <p class="font-label-md text-label-md text-primary mb-2">
+              3. Revisión
+            </p>
+
+            <p class="text-body-md text-on-surface-variant">
+              Confirmación de dirección, envío, pago, productos, resumen de
+              compra, términos y saldo final a pagar.
+            </p>
+          </div>
+
+          <div
+            class="p-6 bg-white border border-outline-variant rounded-xl card-hover transition-standard"
+          >
+            <div
+              class="w-12 h-12 rounded-full bg-primary-fixed flex items-center justify-center mb-4"
+            >
+              <span class="material-symbols-outlined text-primary"
+                >check_circle</span
+              >
+            </div>
+
+            <p class="font-label-md text-label-md text-primary mb-2">
+              4. Confirmación
+            </p>
+
+            <p class="text-body-md text-on-surface-variant">
+              Pedido recibido, estado del pago, número de pedido, detalle de
+              entrega y claridad sobre monedas acumuladas o redimidas.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Prototype Screens -->
+      <section class="mb-20">
+        <div class="flex items-center gap-4 mb-8">
+          <h2 class="font-headline-lg text-headline-lg">
+            Prototipo de alta fidelidad
+          </h2>
+
+          <div class="h-px flex-1 bg-outline-variant"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-stack-lg mb-10">
+          <div class="md:col-span-5">
+            <span class="text-primary font-label-md text-label-md uppercase">
+              Mobile Checkout Prototype
+            </span>
+
+            <h3 class="font-headline-lg text-headline-lg mt-3 mb-4">
+              Flujo optimizado de compra en rali-e
+            </h3>
+
+            <p
+              class="text-body-md text-on-surface-variant leading-relaxed mb-6"
+            >
+              El prototipo traduce los hallazgos UX en una experiencia de
+              checkout más clara, progresiva y confiable. Se prioriza la
+              visibilidad del total a pagar, la comprensión de monedas/puntos,
+              la revisión previa del pedido y una confirmación final con estado
+              del pago y datos relevantes.
+            </p>
+
+            <div class="space-y-4">
+              <div
+                class="flex gap-4 p-4 bg-white rounded-lg border-l-4 border-primary shadow-sm"
+              >
+                <span class="material-symbols-outlined text-primary"
+                  >shopping_cart</span
+                >
+
+                <div>
+                  <p class="font-label-md text-label-md">
+                    Carrito con resumen visible
+                  </p>
+                  <p class="text-body-md text-on-surface-variant">
+                    El usuario revisa productos, cantidades, entrega, descuentos
+                    y total de la orden antes de avanzar.
+                  </p>
+                </div>
+              </div>
+
+              <div
+                class="flex gap-4 p-4 bg-white rounded-lg border-l-4 border-primary shadow-sm"
+              >
+                <span class="material-symbols-outlined text-primary"
+                  >payments</span
+                >
+
+                <div>
+                  <p class="font-label-md text-label-md">
+                    Pago y monedas/puntos
+                  </p>
+                  <p class="text-body-md text-on-surface-variant">
+                    Se muestra saldo actual, monto a redimir, límite de uso y
+                    saldo final a pagar para reducir incertidumbre.
+                  </p>
+                </div>
+              </div>
+
+              <div
+                class="flex gap-4 p-4 bg-white rounded-lg border-l-4 border-primary shadow-sm"
+              >
+                <span class="material-symbols-outlined text-primary"
+                  >fact_check</span
+                >
+
+                <div>
+                  <p class="font-label-md text-label-md">
+                    Revisión antes de pagar
+                  </p>
+                  <p class="text-body-md text-on-surface-variant">
+                    Se agrupan dirección, envío, método de pago, productos,
+                    monedas redimidas y saldo final.
+                  </p>
+                </div>
+              </div>
+
+              <div
+                class="flex gap-4 p-4 bg-white rounded-lg border-l-4 border-primary shadow-sm"
+              >
+                <span class="material-symbols-outlined text-primary"
+                  >check_circle</span
+                >
+
+                <div>
+                  <p class="font-label-md text-label-md">
+                    Confirmación del pedido
+                  </p>
+                  <p class="text-body-md text-on-surface-variant">
+                    La pantalla final comunica que el pedido fue recibido,
+                    muestra estado, número de pedido, entrega, pago y resumen.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="md:col-span-7">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <button
+                type="button"
+                aria-label="Abrir prototipo de carrito en grande"
+                data-open-image-modal="assets/prototipo-carrito.png"
+                data-image-title="Prototipo - Carrito de compras"
+                class="group bg-white border border-outline-variant rounded-2xl overflow-hidden hover:border-primary hover:shadow-md transition-standard focus:outline-none focus:ring-4 focus:ring-primary/20"
+              >
+                <div class="bg-surface-container-low p-4">
+                  <img
+                    class="w-full max-h-[520px] object-contain rounded-xl bg-white transition-transform duration-500 group-hover:scale-[1.02]"
+                    src="assets/prototipo-carrito.png"
+                    alt="Pantalla de carrito de compras del prototipo rali-e"
+                  />
+                </div>
+
+                <div
+                  class="p-4 flex items-center justify-between gap-3 text-left"
+                >
+                  <div>
+                    <p class="font-label-md text-label-md text-on-surface">
+                      1. Carrito de compras
+                    </p>
+                    <p class="text-label-sm text-outline">
+                      Productos, cantidades, descuentos y total.
+                    </p>
+                  </div>
+
+                  <span class="material-symbols-outlined text-primary"
+                    >open_in_full</span
+                  >
+                </div>
+              </button>
+
+              <button
+                type="button"
+                aria-label="Abrir prototipo de checkout y pago en grande"
+                data-open-image-modal="assets/prototipo-checkout-pago.png"
+                data-image-title="Prototipo - Checkout y método de pago"
+                class="group bg-white border border-outline-variant rounded-2xl overflow-hidden hover:border-primary hover:shadow-md transition-standard focus:outline-none focus:ring-4 focus:ring-primary/20"
+              >
+                <div class="bg-surface-container-low p-4">
+                  <img
+                    class="w-full max-h-[520px] object-contain rounded-xl bg-white transition-transform duration-500 group-hover:scale-[1.02]"
+                    src="assets/prototipo-checkout-pago.png"
+                    alt="Pantalla de checkout con método de pago y monedas rali-e"
+                  />
+                </div>
+
+                <div
+                  class="p-4 flex items-center justify-between gap-3 text-left"
+                >
+                  <div>
+                    <p class="font-label-md text-label-md text-on-surface">
+                      2. Checkout y pago
+                    </p>
+                    <p class="text-label-sm text-outline">
+                      Método de pago, redención y saldo a pagar.
+                    </p>
+                  </div>
+
+                  <span class="material-symbols-outlined text-primary"
+                    >open_in_full</span
+                  >
+                </div>
+              </button>
+
+              <button
+                type="button"
+                aria-label="Abrir prototipo de revisión de pedido en grande"
+                data-open-image-modal="assets/prototipo-revision.png"
+                data-image-title="Prototipo - Revisión del pedido"
+                class="group bg-white border border-outline-variant rounded-2xl overflow-hidden hover:border-primary hover:shadow-md transition-standard focus:outline-none focus:ring-4 focus:ring-primary/20"
+              >
+                <div class="bg-surface-container-low p-4">
+                  <img
+                    class="w-full max-h-[520px] object-contain rounded-xl bg-white transition-transform duration-500 group-hover:scale-[1.02]"
+                    src="assets/prototipo-revision.png"
+                    alt="Pantalla de revisión del pedido del prototipo rali-e"
+                  />
+                </div>
+
+                <div
+                  class="p-4 flex items-center justify-between gap-3 text-left"
+                >
+                  <div>
+                    <p class="font-label-md text-label-md text-on-surface">
+                      3. Revisión del pedido
+                    </p>
+                    <p class="text-label-sm text-outline">
+                      Dirección, envío, pago, productos y monedas.
+                    </p>
+                  </div>
+
+                  <span class="material-symbols-outlined text-primary"
+                    >open_in_full</span
+                  >
+                </div>
+              </button>
+
+              <button
+                type="button"
+                aria-label="Abrir prototipo de confirmación de pedido en grande"
+                data-open-image-modal="assets/prototipo-confirmacion.png"
+                data-image-title="Prototipo - Confirmación del pedido"
+                class="group bg-white border border-outline-variant rounded-2xl overflow-hidden hover:border-primary hover:shadow-md transition-standard focus:outline-none focus:ring-4 focus:ring-primary/20"
+              >
+                <div class="bg-surface-container-low p-4">
+                  <img
+                    class="w-full max-h-[520px] object-contain rounded-xl bg-white transition-transform duration-500 group-hover:scale-[1.02]"
+                    src="assets/prototipo-confirmacion.png"
+                    alt="Pantalla de confirmación del pedido del prototipo rali-e"
+                  />
+                </div>
+
+                <div
+                  class="p-4 flex items-center justify-between gap-3 text-left"
+                >
+                  <div>
+                    <p class="font-label-md text-label-md text-on-surface">
+                      4. Confirmación
+                    </p>
+                    <p class="text-label-sm text-outline">
+                      Pedido recibido, estado, entrega y resumen.
+                    </p>
+                  </div>
+
+                  <span class="material-symbols-outlined text-primary"
+                    >open_in_full</span
+                  >
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Error States -->
+      <section class="mb-20">
+        <div class="flex items-center gap-4 mb-8">
+          <h2 class="font-headline-lg text-headline-lg">
+            Estados de error diseñados
+          </h2>
+
+          <div class="h-px flex-1 bg-outline-variant"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div class="p-5 rounded-xl border border-error-container bg-white">
+            <p class="font-label-md text-label-md text-error mb-2">
+              E1 · Monto mínimo no alcanzado
+            </p>
+            <p class="text-body-md text-on-surface-variant">
+              El usuario debe ver el valor faltante y una acción clara para
+              volver al carrito.
+            </p>
+          </div>
+
+          <div class="p-5 rounded-xl border border-error-container bg-white">
+            <p class="font-label-md text-label-md text-error mb-2">
+              E2 · Método de pago no seleccionado
+            </p>
+            <p class="text-body-md text-on-surface-variant">
+              Se indica el campo pendiente y se ofrece volver directamente a la
+              selección.
+            </p>
+          </div>
+
+          <div class="p-5 rounded-xl border border-error-container bg-white">
+            <p class="font-label-md text-label-md text-error mb-2">
+              E3 · Error al aplicar monedas
+            </p>
+            <p class="text-body-md text-on-surface-variant">
+              El sistema aclara que no se aplicó la redención y permite intentar
+              nuevamente.
+            </p>
+          </div>
+
+          <div class="p-5 rounded-xl border border-error-container bg-white">
+            <p class="font-label-md text-label-md text-error mb-2">
+              E4 · Dirección incompleta o inválida
+            </p>
+            <p class="text-body-md text-on-surface-variant">
+              Se muestran campos obligatorios pendientes y una acción para
+              editar dirección.
+            </p>
+          </div>
+
+          <div class="p-5 rounded-xl border border-error-container bg-white">
+            <p class="font-label-md text-label-md text-error mb-2">
+              E5 · Envío no disponible
+            </p>
+            <p class="text-body-md text-on-surface-variant">
+              Se informa la restricción de cobertura o fecha y se permite elegir
+              otra opción.
+            </p>
+          </div>
+
+          <div class="p-5 rounded-xl border border-error-container bg-white">
+            <p class="font-label-md text-label-md text-error mb-2">
+              E6/E7 · Términos o procesamiento
+            </p>
+            <p class="text-body-md text-on-surface-variant">
+              El usuario recibe mensajes recuperables: aceptar términos,
+              intentar de nuevo o contactar soporte.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Validation & Results -->
+      <section
+        class="mb-20 p-12 bg-on-surface text-white rounded-3xl overflow-hidden relative"
+      >
+        <div
+          class="relative z-10 grid grid-cols-1 md:grid-cols-12 gap-stack-lg"
+        >
+          <div class="md:col-span-5">
+            <h2 class="font-headline-lg text-headline-lg mb-6">
+              Priorización &amp; Resultado UX
+            </h2>
+
+            <p class="text-body-lg text-surface-variant mb-8 leading-relaxed">
+              La evaluación heurística mostró que el problema principal no era
+              solo visual: el checkout anterior presentaba fricción, sobrecarga
+              y ambigüedad en dinero, puntos y confirmación del pedido.
+            </p>
+
+            <div class="space-y-6">
+              <div class="flex items-center gap-4">
+                <span class="text-4xl font-extrabold text-primary-container"
+                  >5</span
+                >
+
+                <span class="text-label-md opacity-80">
+                  Hallazgos con prioridad crítica: prevención de errores,
+                  monedas/puntos, total a pagar, recuperación y reglas de
+                  negocio.
+                </span>
+              </div>
+
+              <div class="flex items-center gap-4">
+                <span class="text-4xl font-extrabold text-primary-container"
+                  >4</span
+                >
+
+                <span class="text-label-md opacity-80">
+                  Etapas principales propuestas para una experiencia rápida,
+                  clara y segura.
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="md:col-span-7 flex items-center justify-center">
+            <div
+              class="w-full bg-surface-variant/10 rounded-2xl border border-white/10 p-8 backdrop-blur-sm"
+            >
+              <p class="font-label-md text-primary-container mb-4">
+                Cambios clave propuestos
+              </p>
+
+              <ul class="space-y-4 text-body-md text-surface-variant">
+                <li class="flex gap-3">
+                  <span class="material-symbols-outlined text-primary-container"
+                    >check_circle</span
+                  >
+                  <span>
+                    Mostrar pasos claros: carrito, checkout, revisión y
+                    confirmación.
+                  </span>
+                </li>
+
+                <li class="flex gap-3">
+                  <span class="material-symbols-outlined text-primary-container"
+                    >check_circle</span
+                  >
+                  <span>
+                    Destacar un único valor principal: saldo final a pagar.
+                  </span>
+                </li>
+
+                <li class="flex gap-3">
+                  <span class="material-symbols-outlined text-primary-container"
+                    >check_circle</span
+                  >
+                  <span>
+                    Confirmar cuándo las monedas se aplican, se reservan o se
+                    devuelven.
+                  </span>
+                </li>
+
+                <li class="flex gap-3">
+                  <span class="material-symbols-outlined text-primary-container"
+                    >check_circle</span
+                  >
+                  <span>
+                    Diseñar errores claros, acciones de recuperación y estados
+                    pendientes.
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="absolute top-0 right-0 w-1/2 h-full opacity-10 pointer-events-none"
+        ></div>
+      </section>
+
+      <!-- Conclusion -->
+      <section class="mb-20">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-stack-lg">
+          <div class="p-10 border border-outline-variant rounded-2xl">
+            <h3
+              class="font-headline-md text-headline-md mb-6 flex items-center gap-3"
+            >
+              <span class="material-symbols-outlined text-primary"
+                >lightbulb</span
+              >
+              Aprendizajes
+            </h3>
+
+            <ul class="space-y-4 text-body-md text-on-surface-variant">
+              <li class="flex gap-3">
+                <span class="text-primary font-bold">•</span>
+                <span>
+                  En un checkout, cada ambigüedad sobre precio, descuentos o
+                  monedas se convierte en riesgo de abandono.
+                </span>
+              </li>
+
+              <li class="flex gap-3">
+                <span class="text-primary font-bold">•</span>
+                <span>
+                  Las monedas/puntos deben tratarse como dinero: requieren
+                  trazabilidad, confirmación y recuperación clara ante fallos.
+                </span>
+              </li>
+
+              <li class="flex gap-3">
+                <span class="text-primary font-bold">•</span>
+                <span>
+                  La revisión del pedido debe ser el momento de mayor claridad,
+                  no una pantalla con sobrecarga de datos.
+                </span>
+              </li>
+            </ul>
+          </div>
+
+          <div
+            class="bg-primary-container/10 p-10 rounded-2xl border border-primary/20 flex flex-col justify-center items-center text-center"
+          >
+            <p class="font-headline-md text-headline-md mb-4 text-primary">
+              Conclusión UX senior
+            </p>
+
+            <p class="text-body-md mb-8 max-w-sm">
+              El rediseño debe reducir fricción acumulada, hacer explícito el
+              estado de pago y proteger la confianza del usuario frente al uso
+              de monedas, beneficios y confirmación del pedido.
+            </p>
+
+            <a
+              class="bg-primary text-on-primary px-8 py-3 rounded-full font-label-md hover:scale-105 transition-transform inline-block"
+              href="index.html#contacto"
+              >Conversemos sobre tu proyecto</a
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Image Modal -->
+    <div
+      id="image-modal"
+      class="fixed inset-0 z-[100] hidden bg-black/80 p-4 md:p-8"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="image-modal-title"
+    >
+      <button
+        type="button"
+        id="image-modal-close"
+        class="absolute right-4 top-4 z-10 flex h-11 w-11 items-center justify-center rounded-full bg-white text-on-surface shadow-lg transition-standard hover:scale-105 focus:outline-none focus:ring-4 focus:ring-primary/30"
+        aria-label="Cerrar imagen ampliada"
+      >
+        <span class="material-symbols-outlined">close</span>
+      </button>
+
+      <div
+        class="flex h-full w-full flex-col items-center justify-center gap-4"
+      >
+        <p
+          id="image-modal-title"
+          class="rounded-full bg-white/90 px-4 py-2 font-label-md text-label-md text-on-surface backdrop-blur"
+        >
+          Imagen del proyecto
+        </p>
+
+        <div
+          class="max-h-[85vh] max-w-full overflow-auto rounded-2xl bg-white shadow-2xl"
+        >
+          <img
+            id="image-modal-img"
+            class="h-auto max-w-none md:max-w-full object-contain"
+            src=""
+            alt=""
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-surface border-t border-outline-variant">
+      <div
+        class="flex flex-col md:flex-row justify-between items-center w-full py-stack-lg px-gutter max-w-container-max mx-auto"
+      >
+        <div
+          class="font-headline-md text-headline-md text-on-surface mb-4 md:mb-0"
+        >
+          Tania Narváez
+        </div>
+
+        <div class="flex gap-8 items-center">
+          <a
+            class="text-on-surface-variant hover:text-primary transition-colors font-label-md"
+            href="#"
+          >
+            LinkedIn
+          </a>
+
+          <a
+            class="text-on-surface-variant hover:text-primary transition-colors font-label-md"
+            href="mailto:tania@uxportfolio.com"
+          >
+            Email
+          </a>
+
+          <a
+            class="text-on-surface-variant hover:text-primary transition-colors font-label-md"
+            href="#"
+          >
+            Teléfono
+          </a>
+        </div>
+
+        <div class="text-on-surface-variant font-label-md mt-4 md:mt-0">
+          © 2025 Tania Narváez
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const observerOptions = {
+          threshold: 0.1,
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("opacity-100", "translate-y-0");
+              entry.target.classList.remove("opacity-0", "translate-y-4");
+            }
+          });
+        }, observerOptions);
+
+        document.querySelectorAll("section").forEach((section) => {
+          section.classList.add(
+            "transition-all",
+            "duration-700",
+            "opacity-0",
+            "translate-y-4",
+          );
+
+          observer.observe(section);
+        });
+
+        const imageModal = document.getElementById("image-modal");
+        const imageModalImg = document.getElementById("image-modal-img");
+        const imageModalTitle = document.getElementById("image-modal-title");
+        const imageModalClose = document.getElementById("image-modal-close");
+
+        const openImageModal = (src, title) => {
+          if (!imageModal || !imageModalImg || !imageModalTitle) return;
+
+          imageModalImg.src = src;
+          imageModalImg.alt = `${title} ampliado`;
+          imageModalTitle.textContent = title;
+          imageModal.classList.remove("hidden");
+          document.body.classList.add("overflow-hidden");
+        };
+
+        const closeImageModal = () => {
+          if (!imageModal || !imageModalImg || !imageModalTitle) return;
+
+          imageModal.classList.add("hidden");
+          imageModalImg.src = "";
+          imageModalImg.alt = "";
+          imageModalTitle.textContent = "Imagen del proyecto";
+          document.body.classList.remove("overflow-hidden");
+        };
+
+        document.querySelectorAll("[data-open-image-modal]").forEach((item) => {
+          item.addEventListener("click", () => {
+            openImageModal(
+              item.getAttribute("data-open-image-modal"),
+              item.getAttribute("data-image-title") || "Imagen del proyecto",
+            );
+          });
+        });
+
+        imageModalClose?.addEventListener("click", closeImageModal);
+
+        imageModal?.addEventListener("click", (event) => {
+          if (event.target === imageModal) {
+            closeImageModal();
+          }
+        });
+
+        document.addEventListener("keydown", (event) => {
+          if (event.key === "Escape") {
+            closeImageModal();
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
